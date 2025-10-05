@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcuuiko64tote"]
+
+[ext_resource type="AudioStream" uid="uid://6kvdg434dskp" path="res://collectiveJourney/resources/bgm/Morning.mp3" id="1_lustc"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, -11, -14)
+stream = ExtResource("1_lustc")
+volume_db = 10.0
+autoplay = true

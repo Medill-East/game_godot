@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn6iso62xv7lr"]
+
+[ext_resource type="Script" uid="uid://d0j73fcbnd3gw" path="res://player.gd" id="1_abcde"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12345"]
+height = 2.59411
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_67890"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_head"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_hand"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_foot"]
+radius = 0.2
+height = 0.4
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_abcde")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_12345")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_67890")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 4.52533e-08, -1.68888e-07, 0, 0.965926, 0.258819, 1.74846e-07, -0.258819, 0.965926, 0, 2, 3.07364)
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("SphereMesh_head")
+
+[node name="LeftArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.8, 0)
+
+[node name="LeftHand" type="MeshInstance3D" parent="LeftArmPivot"]
+transform = Transform3D(5, -0.866026, 0, 8.66026, 0.5, 0, 0, 0, 1, -0.667585, -1.25326, 0)
+mesh = SubResource("SphereMesh_hand")
+
+[node name="RightArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.8, 0)
+
+[node name="RightHand" type="MeshInstance3D" parent="RightArmPivot"]
+transform = Transform3D(2.5, 0.866025, 0, -4.33013, 0.5, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("SphereMesh_hand")
+
+[node name="LeftFoot" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.3, -1.2, 0)
+mesh = SubResource("SphereMesh_foot")
+
+[node name="RightFoot" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.3, -1.2, 0)
+mesh = SubResource("SphereMesh_foot")
